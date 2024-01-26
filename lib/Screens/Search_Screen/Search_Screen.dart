@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magic_bricks/Constants/Constants.dart';
-import 'package:magic_bricks/Widgets/CustomAppBar.dart';
+import 'package:magic_bricks/Widgets/AppBar/AppBar.dart';
 import '../../Components/PropertyCard.dart';
 import '../../Models/PropertyModel.dart';
 
@@ -24,31 +24,40 @@ class _Search_ScreenState extends State<Search_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(text: 'Property Search'),
+      backgroundColor: Colors.grey,
+      appBar: commonAppBar(context),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: _searchText,
-              onChanged: (value) {
-                setState(() {
-                  _search = value;
-                });
-              },
-              decoration: InputDecoration(
-                hintText: 'Search',
-                prefixIcon: Icon(Icons.search),
-                suffix: GestureDetector(
-                  onTap: () {
-                    print("Reset");
-                    setState(() {});
-                    _searchText.clear();
-                  },
-                  child: Text(
-                    "Reset",
-                    style:
-                        TextStyle(color: AppConstantsColor.materialButtonColor),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: TextFormField(
+                keyboardType: TextInputType.text,
+                controller: _searchText,
+                onChanged: (value) {
+                  setState(() {
+                    _search = value;
+                  });
+                },
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Search Property',
+                  prefixIcon: Icon(Icons.search),
+                  suffix: GestureDetector(
+                    onTap: () {
+                      print("Reset");
+                      setState(() {});
+                      _searchText.clear();
+                    },
+                    child: Text(
+                      "Reset",
+                      style: TextStyle(
+                          color: AppConstantsColor.materialButtonColor),
+                    ),
                   ),
                 ),
               ),

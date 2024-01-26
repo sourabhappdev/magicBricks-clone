@@ -5,9 +5,7 @@ import 'package:magic_bricks/Screens/Favourite_Screen/Favourite_Screen.dart';
 import 'package:magic_bricks/Screens/Home_Screen/Home_Screen.dart';
 import 'package:magic_bricks/Screens/Search_Screen/Search_Screen.dart';
 import 'package:magic_bricks/Screens/Account_Screen/Account_Screen.dart';
-import 'package:animated_expandable_fab/animated_expandable_fab.dart';
-
-import '../Screens/PostAd_Screen/PostAd_Screen.dart';
+import 'package:magic_bricks/Widgets/Drawer.dart';
 
 class MainNavigator extends StatefulWidget {
   @override
@@ -15,13 +13,13 @@ class MainNavigator extends StatefulWidget {
 }
 
 class _MainNavigatorState extends State<MainNavigator> {
+
   PageController _pageController = PageController();
 
   int _selectedIndex = 0;
   List<Widget> _screen = [
     Home_Screen(),
     Search_Screen(),
-    PostAd_Screen(),
     Favourite_Screen(),
     Account_Screen(),
   ];
@@ -46,8 +44,9 @@ class _MainNavigatorState extends State<MainNavigator> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: MyDrawer(),
       body: PageView.builder(
-          itemCount: 5,
+          itemCount: 4,
           controller: _pageController,
           onPageChanged: (page) {
             setState(() {
@@ -60,56 +59,11 @@ class _MainNavigatorState extends State<MainNavigator> {
               child: _screen[position],
             );
           }),
-      // floatingActionButton: ExpandableFab(
-      //   closeBackgroundColor: AppConstantsColor.materialButtonColor,
-      //   openElevation: 5,
-      //   initialOpen: false,
-      //   closeElevation: 5,
-      //   distance: 80,
-      //   openIcon: Icon(
-      //     Icons.add,
-      //     color: Colors.white,
-      //   ),
-      //   closeIcon: Icon(
-      //     Icons.close,
-      //     color: Colors.white,
-      //   ),
-      //   children: [
-      //     ActionButton(
-      //       elevation: 5,
-      //       color: AppConstantsColor.materialButtonColor,
-      //       text: Padding(
-      //         padding: const EdgeInsets.all(8.0),
-      //         child: Text(
-      //           "BUY",
-      //           style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),
-      //         ),
-      //       ),
-      //       onPressed: () {},
-      //       icon: Icon(
-      //         Icons.arrow_upward,
-      //         color: Colors.white,
-      //       ),
-      //     ),
-      //     ActionButton(
-      //       color: AppConstantsColor.materialButtonColor,
-      //       elevation: 5,
-      //       text: Padding(
-      //         padding: const EdgeInsets.all(8.0),
-      //         child: Text("SELL", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24)),
-      //       ),
-      //       onPressed: () {},
-      //       icon: Icon(
-      //         Icons.arrow_downward,
-      //         color: Colors.white,
-      //       ),
-      //     ),
-      //   ],
-      // ),
+
       bottomNavigationBar: Container(
         color: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 17),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
           child: GNav(
             tabs: const [
               GButton(
@@ -121,11 +75,6 @@ class _MainNavigatorState extends State<MainNavigator> {
                 icon: Icons.search,
                 iconColor: AppConstantsColor.materialButtonColor,
                 text: 'Search',
-              ),
-              GButton(
-                icon: Icons.add,
-                iconColor: AppConstantsColor.materialButtonColor,
-                text: 'Post Ad',
               ),
               GButton(
                 icon: Icons.favorite,

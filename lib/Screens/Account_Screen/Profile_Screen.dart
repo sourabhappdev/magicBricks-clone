@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:magic_bricks/Constants/Constants.dart';
-import 'package:magic_bricks/Widgets/CustomAppBar.dart';
+import '../../Widgets/AppBar/AppBar.dart';
 
 class Profile_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(text: 'My Profile'),
+      appBar: commonAppBar(context),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:magic_bricks/Widgets/CustomAppBar.dart';
+import 'package:magic_bricks/Widgets/Drawer.dart';
+import '../../Widgets/AppBar/AppBar.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({super.key});
@@ -13,8 +14,8 @@ class _Home_ScreenState extends State<Home_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomAppBar(text: "Home"),
-      body: SingleChildScrollView(
+      appBar: homeAppBar(context),
+      body: const SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -23,4 +24,5 @@ class _Home_ScreenState extends State<Home_Screen> {
       ),
     );
   }
+
 }

@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
-import 'package:magic_bricks/Widgets/CustomAppBar.dart';
+import 'package:magic_bricks/Constants/Constants.dart';
+
 
 
 class PostAd_Screen extends StatefulWidget {
@@ -13,7 +15,11 @@ class _PostAd_ScreenState extends State<PostAd_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(text: "Post Ad"),
+      appBar: AppBar(
+        backgroundColor: AppConstantsColor.materialButtonColor,
+        centerTitle: true,
+        title: Text("Post Porperty",style: TextStyle(color: Colors.white),),
+      ),
       
     );
   }
