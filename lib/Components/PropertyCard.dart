@@ -1,10 +1,20 @@
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../Constants/Constants.dart';
 import '../Models/PropertyModel.dart';
 
-class PropertyCard extends StatelessWidget {
+class PropertyCard extends StatefulWidget {
   final PropertyModel property;
-
   PropertyCard({required this.property});
+
+  @override
+  State<PropertyCard> createState() => _PropertyCardState();
+}
+
+class _PropertyCardState extends State<PropertyCard> {
+  int _myCurrentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +23,7 @@ class PropertyCard extends StatelessWidget {
       elevation: 4.0,
       margin: EdgeInsets.all(8.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Property Image
@@ -21,16 +32,53 @@ class PropertyCard extends StatelessWidget {
               topLeft: Radius.circular(8.0),
               topRight: Radius.circular(8.0),
             ),
-            child: Image.network(
-              property.imageUrl,
-              height: 250.0,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.high,
+            child: CarouselSlider.builder(
+              itemCount: 3,
+              itemBuilder: (context, index, realIndex) {
+                return Image.network(
+                  widget.property.imageUrl,
+                  height: 250.0,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
+                );
+              },
+              options: CarouselOptions(
+                autoPlay: true,
+                height: 250,
+                pageSnapping: true,
+                viewportFraction: 1,
+                autoPlayInterval: Duration(milliseconds: 1500),
+                autoPlayAnimationDuration: Duration(seconds: 1),
+                autoPlayCurve: Curves.linear,
+                // enlargeCenterPage: true,
+                aspectRatio: 16 / 9,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _myCurrentIndex = index;
+                  });
+                },
+              ),
             ),
           ),
           SizedBox(
-            height: 8.0,
+            height: 4.0,
+          ),
+          Center(
+            child: AnimatedSmoothIndicator(
+                activeIndex: _myCurrentIndex,
+                effect: const WormEffect(
+                  activeDotColor: Colors.black,
+                  dotColor: Colors.grey,
+                  paintStyle: PaintingStyle.fill,
+                  dotWidth: 8,
+                  dotHeight: 8,
+                  spacing: 10,
+                ),
+                count: 3),
+          ),
+          SizedBox(
+            height: 4.0,
           ),
           // Property Details
           Padding(
@@ -44,7 +92,7 @@ class PropertyCard extends StatelessWidget {
                   children: [
                     // Property Name
                     Text(
-                      property.name,
+                      widget.property.name,
                       style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
@@ -54,7 +102,7 @@ class PropertyCard extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          '\$${property.price.toString()}',
+                          '\$${widget.property.price.toString()}',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.bold,
@@ -91,7 +139,7 @@ class PropertyCard extends StatelessWidget {
 
                 // Property Location
                 Text(
-                  property.location,
+                  widget.property.location,
                   style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.black87,

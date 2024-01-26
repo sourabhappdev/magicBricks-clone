@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:magic_bricks/Components/CarouseSlider.dart';
 import 'package:magic_bricks/Screens/Login_Screen/CreateProfile_Screen.dart';
 import 'package:magic_bricks/Widgets/MainNavigator.dart';
@@ -26,7 +27,9 @@ class _Login_ScreenState extends State<Login_Screen> {
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                SystemNavigator.pop();
+              },
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.black87,
