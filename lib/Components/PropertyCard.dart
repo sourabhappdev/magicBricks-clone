@@ -32,54 +32,58 @@ class _PropertyCardState extends State<PropertyCard> {
               topLeft: Radius.circular(8.0),
               topRight: Radius.circular(8.0),
             ),
-            child: CarouselSlider.builder(
-              itemCount: 3,
-              itemBuilder: (context, index, realIndex) {
-                return Image.network(
-                  widget.property.imageUrl,
-                  height: 250.0,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  filterQuality: FilterQuality.high,
-                );
-              },
-              options: CarouselOptions(
-                autoPlay: true,
-                height: 250,
-                pageSnapping: true,
-                viewportFraction: 1,
-                autoPlayInterval: Duration(milliseconds: 1500),
-                autoPlayAnimationDuration: Duration(seconds: 1),
-                autoPlayCurve: Curves.linear,
-                // enlargeCenterPage: true,
-                aspectRatio: 16 / 9,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _myCurrentIndex = index;
-                  });
-                },
-              ),
+            child: Stack(
+              children: [
+                CarouselSlider.builder(
+                  itemCount: 3,
+                  itemBuilder: (context, index, realIndex) {
+                    return Image.network(
+                      widget.property.imageUrl,
+                      height: 250.0,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      filterQuality: FilterQuality.high,
+                    );
+                  },
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    height: 250,
+                    pageSnapping: true,
+                    viewportFraction: 1,
+                    autoPlayInterval: Duration(milliseconds: 1500),
+                    autoPlayAnimationDuration: Duration(seconds: 1),
+                    autoPlayCurve: Curves.linear,
+                    aspectRatio: 16 / 9,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _myCurrentIndex = index;
+                      });
+                    },
+                  ),
+                ),
+                Positioned(
+                  bottom: 8.0, // Adjust the position as needed
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: AnimatedSmoothIndicator(
+                      activeIndex: _myCurrentIndex,
+                      effect: const WormEffect(
+                        activeDotColor: Colors.black,
+                        dotColor: Colors.grey,
+                        paintStyle: PaintingStyle.fill,
+                        dotWidth: 8,
+                        dotHeight: 8,
+                        spacing: 10,
+                      ),
+                      count: 3,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          SizedBox(
-            height: 4.0,
-          ),
-          Center(
-            child: AnimatedSmoothIndicator(
-                activeIndex: _myCurrentIndex,
-                effect: const WormEffect(
-                  activeDotColor: Colors.black,
-                  dotColor: Colors.grey,
-                  paintStyle: PaintingStyle.fill,
-                  dotWidth: 8,
-                  dotHeight: 8,
-                  spacing: 10,
-                ),
-                count: 3),
-          ),
-          SizedBox(
-            height: 4.0,
-          ),
+
           // Property Details
           Padding(
             padding: EdgeInsets.all(8.0),
@@ -121,7 +125,6 @@ class _PropertyCardState extends State<PropertyCard> {
                     ),
                   ],
                 ),
-                // SizedBox(height: 8.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -134,10 +137,6 @@ class _PropertyCardState extends State<PropertyCard> {
                     ),
                   ],
                 ),
-
-                // SizedBox(height: 8.0),
-
-                // Property Location
                 Text(
                   widget.property.location,
                   style: TextStyle(
@@ -155,21 +154,14 @@ class _PropertyCardState extends State<PropertyCard> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.pinkAccent,
-                    borderRadius: BorderRadius.circular(12),
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite,
+                    color: Colors.redAccent,
                   ),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.favorite_border,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      // Handle favorite button press
-                    },
-                  ),
+                  onPressed: () {
+                    // Handle favorite button press
+                  },
                 ),
               ],
             ),
