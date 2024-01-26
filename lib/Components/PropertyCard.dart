@@ -121,7 +121,7 @@ class _PropertyCardState extends State<PropertyCard> {
                     ),
                   ],
                 ),
-                SizedBox(height: 8.0),
+                // SizedBox(height: 8.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -135,7 +135,7 @@ class _PropertyCardState extends State<PropertyCard> {
                   ],
                 ),
 
-                SizedBox(height: 8.0),
+                // SizedBox(height: 8.0),
 
                 // Property Location
                 Text(
