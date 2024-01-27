@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:magic_bricks/Screens/Account_Screen/Profile_Screen.dart';
+import 'package:flutter/services.dart';
+import 'package:magic_bricks/Screens/Account_Screen/Help_Screen/Help_Screen.dart';
+import 'package:magic_bricks/Screens/Account_Screen/Profile_Screen/Profile_Screen.dart';
 import 'package:magic_bricks/Screens/Favourite_Screen/Favourite_Screen.dart';
 import 'package:magic_bricks/Widgets/AppBar/AppBar.dart';
 
@@ -47,6 +49,7 @@ class _Account_ScreenState extends State<Account_Screen> {
               title: Text('HELP'),
               onTap: () {
                 // Handle help tile tap
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Help_Screen(),));
                 print('Help tapped');
               },
             ),
@@ -54,7 +57,7 @@ class _Account_ScreenState extends State<Account_Screen> {
               leading: Icon(Icons.exit_to_app),
               title: Text('LOGOUT'),
               onTap: () {
-                // Handle logout tile tap
+                SystemNavigator.pop();
                 print('Logout tapped');
               },
             ),

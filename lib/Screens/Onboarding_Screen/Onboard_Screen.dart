@@ -35,8 +35,8 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
       verticalPosition: 0.85,
       colors: <Color>[
         Colors.white,
+        Colors.deepPurpleAccent,
         Colors.blueAccent,
-        Colors.amberAccent
       ], // null = infinity
       itemBuilder: (int index) {
         return Center(

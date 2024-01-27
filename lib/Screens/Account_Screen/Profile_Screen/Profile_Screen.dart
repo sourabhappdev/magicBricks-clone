@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magic_bricks/Constants/Constants.dart';
-import '../../Widgets/AppBar/AppBar.dart';
+import '../../../Widgets/AppBar/AppBar.dart';
 
 class Profile_Screen extends StatelessWidget {
   @override

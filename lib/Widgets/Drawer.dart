@@ -4,7 +4,7 @@ import 'package:magic_bricks/Screens/Home_Screen/Home_Screen.dart';
 import 'package:magic_bricks/Screens/PostAd_Screen/PostAd_Screen.dart';
 import 'package:magic_bricks/Widgets/MainNavigator.dart';
 
-import '../Screens/Account_Screen/Profile_Screen.dart';
+import '../Screens/Account_Screen/Profile_Screen/Profile_Screen.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
