@@ -5,6 +5,7 @@ import 'package:magic_bricks/Screens/Splash_Screen/Splash_Screen.dart';
 import 'package:magic_bricks/Widgets/MainNavigator.dart';
 import 'package:magic_bricks/test..dart';
 
+
 void main() {
   runApp(const MyApp());
 }
