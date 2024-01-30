@@ -7,9 +7,9 @@ import 'package:magic_bricks/test..dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: "assets/.env");
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
-  // print(dotenv.env["Secret_Key"]);
+  print(dotenv.env["SECRET_KEY"]);
 }
 
 class MyApp extends StatelessWidget {
