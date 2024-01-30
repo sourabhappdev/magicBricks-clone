@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:magic_bricks/Components/CarouseSlider.dart';
-import 'package:magic_bricks/Screens/Login_Screen/CreateProfile_Screen.dart';
+import 'package:magic_bricks/Screens/CreateProfile_Screen/CreateProfile_Screen.dart';
 import 'package:magic_bricks/Widgets/MainNavigator.dart';
 
 import '../../Constants/Constants.dart';
@@ -66,8 +66,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                     TextSpan(
                       text: "Love \"",
                       style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold),
+                          color: Colors.red, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -75,7 +74,7 @@ class _Login_ScreenState extends State<Login_Screen> {
               SizedBox(
                 height: height * 0.04,
               ),
-              HomePageSlider(),
+              LoginPageSlider(),
               SizedBox(height: height * 0.1),
               ElevatedButton(
                 onPressed: () {
@@ -87,9 +86,8 @@ class _Login_ScreenState extends State<Login_Screen> {
                       ));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Colors.black87,
-                      elevation: 5,// Change the button color as needed
+                  backgroundColor: Colors.black87,
+                  elevation: 5, // Change the button color as needed
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

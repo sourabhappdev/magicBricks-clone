@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:magic_bricks/Widgets/MainNavigator.dart';
 
@@ -12,16 +14,36 @@ class CreateProfile_Screen extends StatefulWidget {
 
 class _CreateProfile_ScreenState extends State<CreateProfile_Screen> {
   TextEditingController _emailController = TextEditingController();
-  TextEditingController _ageController = TextEditingController();
   TextEditingController _nameController = TextEditingController();
   TextEditingController _mobileController = TextEditingController();
+  bool _isButtonDisabled = false;
+  int _timerSeconds = 60;
+  Timer? _timer;
+
+  void startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_timerSeconds > 0) {
+          _timerSeconds--;
+        } else {
+          _timer?.cancel();
+          _isButtonDisabled = false;
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     late String _email;
-    late String _age;
     late String _name;
     late String _mobile;
 
@@ -68,50 +90,6 @@ class _CreateProfile_ScreenState extends State<CreateProfile_Screen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: TextFormField(
-                  controller: _ageController,
-                  keyboardType: TextInputType.number,
-                  onChanged: (value) {
-                    _age = value;
-                  },
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(width: 2),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    prefixIcon: Icon(Icons.accessibility),
-                    hintText: 'Age',
-                  ),
-                ),
-              ),
-              SizedBox(height: height * 0.02),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: TextFormField(
-                  controller: _mobileController,
-                  keyboardType: TextInputType.number,
-                  onChanged: (value) {
-                    _mobile = value;
-                  },
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(width: 2),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    prefixIcon: Icon(Icons.phone),
-                    hintText: 'Mobile Number',
-                  ),
-                ),
-              ),
-              SizedBox(height: height * 0.02),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   onChanged: (value) {
@@ -130,6 +108,61 @@ class _CreateProfile_ScreenState extends State<CreateProfile_Screen> {
                   ),
                 ),
               ),
+              SizedBox(height: height * 0.02),
+              Row(
+                children: [
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: TextFormField(
+                        controller: _mobileController,
+                        keyboardType: TextInputType.number,
+                        onChanged: (value) {
+                          _mobile = value;
+                        },
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(width: 2),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          prefixIcon: Icon(Icons.phone),
+                          hintText: 'Mobile Number',
+                        ),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: _isButtonDisabled
+                        ? null
+                        : () {
+                      // Handle button press (send OTP)
+                      setState(() {
+                        _isButtonDisabled = true;
+                        _timerSeconds = 60;
+                      });
+                      startTimer();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: AppConstantsColor.materialButtonColor,
+                      elevation: 5,
+                      padding: EdgeInsets.all(10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: _isButtonDisabled
+                        ? Text('$_timerSeconds seconds')
+                        : Text('Send OTP'),
+                  ),
+                ],
+              ),
+              SizedBox(height: height * 0.02),
+
+
               SizedBox(
                 height: height * 0.04,
               ),
@@ -146,13 +179,15 @@ class _CreateProfile_ScreenState extends State<CreateProfile_Screen> {
                 onPressed: () {
                   _email = _emailController.text;
                   _name = _nameController.text;
-                  _age = _ageController.text;
                   _mobile = _mobileController.text;
                   print('name: $_name');
-                  print('Age: $_age');
                   print('Email: $_mobile');
                   print('Email: $_email');
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MainNavigator(),));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainNavigator(),
+                      ));
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),

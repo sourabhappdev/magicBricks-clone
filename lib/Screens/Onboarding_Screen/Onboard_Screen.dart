@@ -21,9 +21,14 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ConcentricPageView(
-          nextButtonBuilder: (context){
-            return const Center(child: Icon(Icons.arrow_forward,size: 30,),);
-          },
+      nextButtonBuilder: (context) {
+        return const Center(
+          child: Icon(
+            Icons.arrow_forward,
+            size: 30,
+          ),
+        );
+      },
       onFinish: () {
         Navigator.pushAndRemoveUntil(
             context,

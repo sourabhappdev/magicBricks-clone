@@ -46,6 +46,7 @@ class _MainNavigatorState extends State<MainNavigator> {
       backgroundColor: Colors.white,
       drawer: MyDrawer(),
       body: PageView.builder(
+        physics: NeverScrollableScrollPhysics(),
           itemCount: 4,
           controller: _pageController,
           onPageChanged: (page) {

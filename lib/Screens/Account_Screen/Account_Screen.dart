@@ -54,6 +54,14 @@ class _Account_ScreenState extends State<Account_Screen> {
               },
             ),
             ListTile(
+              leading: Icon(Icons.delete),
+              title: Text('DELETE ACCOUNT'),
+              onTap: () {
+                // Handle help tile tap
+                print('DELETE tapped');
+              },
+            ),
+            ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('LOGOUT'),
               onTap: () {

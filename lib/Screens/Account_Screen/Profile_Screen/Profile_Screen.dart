@@ -12,39 +12,36 @@ class Profile_Screen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 60,
-              backgroundImage: NetworkImage("https://img.freepik.com/premium-vector/business-global-economy_24877-41082.jpg"), // Replace with your image asset
-            ),
-            SizedBox(height: 16),
-            Text(
-              'Xyx Xyz',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppConstantsColor.materialButtonColor,
-                elevation: 5, // Change the button color as needed
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.edit,
-                    color: Colors.white,
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    offset: Offset(0, 4), // vertical shadow
+                    blurRadius: 4.0, // blur radius
                   ),
-                  SizedBox(width: 10),
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 60,
+                    backgroundImage: NetworkImage(
+                        "https://img.freepik.com/premium-vector/business-global-economy_24877-41082.jpg"), // Replace with your image asset
+                  ),
+                  SizedBox(height: 16),
                   Text(
-                    'Edit Profile',
+                    'Xyx Xyz',
                     style: TextStyle(
-                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
+                  SizedBox(height: 16),
                 ],
               ),
             ),
@@ -52,10 +49,10 @@ class Profile_Screen extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Xyz Xyz'),
-            ),
-            ListTile(
-              leading: Icon(Icons.accessibility),
-              title: Text('21'),
+              trailing: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.edit),
+              ),
             ),
             ListTile(
               leading: Icon(Icons.email),

@@ -176,7 +176,7 @@ class _PropertyCardState extends State<PropertyCard> {
                     icon: Icon(
                       Icons.favorite,
                       color: Colors.redAccent,
-                      size: 32,
+                      size: 24,
                     ),
                     onPressed: () {
                       // Handle favorite button press

@@ -2,8 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:magic_bricks/Constants/Constants.dart';
 
-class HomePageSlider extends StatelessWidget {
-  const HomePageSlider({
+class LoginPageSlider extends StatelessWidget {
+  const LoginPageSlider({
     super.key,
   });
 
@@ -19,7 +19,7 @@ class HomePageSlider extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Container(
-                color: AppConstantsColor.materialButtonColor,
+                color: AppConstantsColor.darkTextColor,
                 height: 250,
                 width: 500,
               ),

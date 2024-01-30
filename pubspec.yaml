@@ -43,6 +43,7 @@ dependencies:
   animated_expandable_fab: ^0.0.3
   smooth_page_indicator: ^1.1.0
   flutter_dotenv: ^5.1.0
+  geolocator: ^10.1.0
 
 dev_dependencies:
   flutter_test:

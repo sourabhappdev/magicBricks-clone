@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:magic_bricks/Components/NotificationCard.dart';
-import 'package:magic_bricks/Screens/Home_Screen/Home_Screen.dart';
 import 'package:magic_bricks/Screens/Notification_Screen/Notification_Screen.dart';
 import 'package:magic_bricks/Widgets/MainNavigator.dart';
 import '../../Constants/Constants.dart';
