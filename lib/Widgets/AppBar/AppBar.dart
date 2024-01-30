@@ -14,7 +14,7 @@ AppBar homeAppBar(BuildContext context) {
         Scaffold.of(context).openDrawer();
       },
       icon: Icon(
-        Icons.dashboard,
+        Icons.menu,
         color: Colors.white,
       ),
     ),

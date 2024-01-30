@@ -10,11 +10,14 @@ class PostAd_Screen extends StatefulWidget {
 
 class _PostAd_ScreenState extends State<PostAd_Screen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String _title = '';
-  String _description = '';
-  String _price = '';
+  String selectedCategory = category[0];
+  String selectedSubResidentialCategory = residentialCategory[0];
+  String selectedSubCommercialCategory = commercialCategory[0];
+  bool residential = true;
+  bool commercial = false;
+  String _city = '';
   String _location = '';
-  String _contactInfo = '';
+  String _address = '';
 
   @override
   Widget build(BuildContext context) {
@@ -33,91 +36,223 @@ class _PostAd_ScreenState extends State<PostAd_Screen> {
           ),
         ),
         title: Text(
-          "Post Porperty",
+          "Post Property",
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body:  Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: ListView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Property Title'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a title';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _title = value!;
-                },
+              Text(
+                "Hi John Doe,",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Description'),
-                maxLines: 3,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a description';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _description = value!;
-                },
+              Text(
+                "You Are Posting Your Property For:",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Price'),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a price';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _price = value!;
-                },
+              SizedBox(
+                height: 16,
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Location'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a location';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _location = value!;
-                },
+              Column(
+                children: category.map((item) {
+                  return Column(
+                    children: [
+                      RadioListTile(
+                        title: Text(
+                          item,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        value: item,
+                        groupValue: selectedCategory,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedCategory = value.toString();
+                            print(selectedCategory);
+                          });
+                        },
+                      ),
+                      Divider(),
+                    ],
+                  );
+                }).toList(),
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Contact Information'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter contact information';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _contactInfo = value!;
-                },
+              SizedBox(
+                height: 16,
               ),
-              SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    // Add logic to save the property details (e.g., send to server, database, etc.)
-                    // You can use the values of _title, _description, _price, _location, _contactInfo
-                    // for further processing.
-                    // Once the property is posted, you can navigate to the next screen or perform any other action.
-                  }
-                },
-                child: Text('Post Property'),
+              Text(
+                "What type of property is it?",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        residential = true;
+                        commercial = false;
+                        print("r");
+                      });
+                    },
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text("Residential"),
+                      ),
+                      decoration: BoxDecoration(
+                        color: residential ? Colors.blueAccent : Colors.grey,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        residential = false;
+                        commercial = true;
+                        print("c");
+                      });
+                    },
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text("Commercial"),
+                      ),
+                      decoration: BoxDecoration(
+                        color: commercial ? Colors.blueAccent : Colors.grey,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Column(
+                children: residential
+                    ? residentialCategory.map((item) {
+                  return Column(
+                    children: [
+                      RadioListTile(
+                        title: Text(
+                          item,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        value: item,
+                        groupValue: selectedSubResidentialCategory,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedSubResidentialCategory =
+                                value.toString();
+                            print(selectedSubResidentialCategory);
+                          });
+                        },
+                      ),
+                      Divider(),
+                    ],
+                  );
+                }).toList()
+                    : commercialCategory.map((item) {
+                  return Column(
+                    children: [
+                      RadioListTile(
+                        title: Text(
+                          item,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        value: item,
+                        groupValue: selectedSubCommercialCategory,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedSubCommercialCategory =
+                                value.toString();
+                            print(selectedSubCommercialCategory);
+                          });
+                        },
+                      ),
+                      Divider(),
+                    ],
+                  );
+                }).toList(),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Text(
+                "Where is Your property located?",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Enter City'),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter a city';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _city = value!;
+                      },
+                    ),
+                    TextFormField(
+                      decoration:
+                      InputDecoration(labelText: 'Enter Locality'),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter a locality';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _location = value!;
+                      },
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                          labelText: 'Enter address optional'),
+                      onSaved: (value) {
+                        _address = value!;
+                      },
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),

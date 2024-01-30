@@ -10,4 +10,26 @@ class AppConstantsColor {
 }
 
 
-
+List<String> category = ['Sell', 'Rent'];
+List<String> residentialCategory = [
+  'Flat/Apartment',
+  'House',
+  'Villa',
+  'Builder Floor',
+  'Plot',
+  'Studio Apartment',
+  'Penthouse',
+  'Farm House'
+];
+List<String> commercialCategory = [
+  'Office/Space',
+  'Office in IT Park/SEZ',
+  'Shop',
+  'Showroom',
+  'Commercial Land',
+  'Warehouse/Godown',
+  'Industrial Land',
+  'Industrial Building',
+  'Industrial Shed',
+  'Agricultural Land'
+];
