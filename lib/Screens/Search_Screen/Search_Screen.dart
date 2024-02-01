@@ -12,66 +12,17 @@ class Search_Screen extends StatefulWidget {
 }
 
 class _Search_ScreenState extends State<Search_Screen> {
-  TextEditingController _searchText = TextEditingController();
-  String _search = "";
-  PropertyModel property = PropertyModel(
-      name: "ABC",
-      location: "Jaipur",
-      price: 12,
-      imageUrl:
-          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvcGVydHl8ZW58MHx8MHx8fDA%3D");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
       appBar: commonAppBar(context),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: TextFormField(
-                keyboardType: TextInputType.text,
-                controller: _searchText,
-                onChanged: (value) {
-                  setState(() {
-                    _search = value;
-                  });
-                },
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Search Property',
-                  prefixIcon: Icon(Icons.search),
-                  suffix: GestureDetector(
-                    onTap: () {
-                      print("Reset");
-                      setState(() {});
-                      _searchText.clear();
-                    },
-                    child: Text(
-                      "Reset",
-                      style: TextStyle(
-                          color: AppConstantsColor.materialButtonColor),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return PropertyCard(
-                  property: property,
-                );
-              },
-            ),
+          SearchBar(
+            
+            leading: Icon(Icons.search),
+            hintText: "Search  Property",
           ),
         ],
       ),

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppConstantsColor {
   AppConstantsColor._();
-  static const Color materialButtonColor = Colors.deepPurpleAccent;
+  // static const Color materialButtonColor = Colors.deepPurpleAccent;
+  static const Color materialButtonColor = Colors.teal;
   static const Color backgroundColor = Color(0xffebebeb);
   static const Color darkTextColor = Color(0xff171717);
   static const Color lightTextColor = Colors.white;

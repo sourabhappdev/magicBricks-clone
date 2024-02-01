@@ -13,7 +13,6 @@ class MainNavigator extends StatefulWidget {
 }
 
 class _MainNavigatorState extends State<MainNavigator> {
-
   PageController _pageController = PageController();
 
   int _selectedIndex = 0;
@@ -46,7 +45,7 @@ class _MainNavigatorState extends State<MainNavigator> {
       backgroundColor: Colors.white,
       drawer: MyDrawer(),
       body: PageView.builder(
-        physics: NeverScrollableScrollPhysics(),
+          physics: NeverScrollableScrollPhysics(),
           itemCount: 4,
           controller: _pageController,
           onPageChanged: (page) {
@@ -60,7 +59,6 @@ class _MainNavigatorState extends State<MainNavigator> {
               child: _screen[position],
             );
           }),
-
       bottomNavigationBar: Container(
         color: Colors.white,
         child: Padding(
@@ -94,7 +92,7 @@ class _MainNavigatorState extends State<MainNavigator> {
             activeColor: Colors.white,
             tabBackgroundColor: AppConstantsColor.materialButtonColor,
             padding: const EdgeInsets.all(16),
-            haptic: true,
+            haptic: false,
             selectedIndex: _selectedIndex,
             onTabChange: (page) {
               setState(() {

@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:magic_bricks/Components/PropertyCard.dart';
+import 'package:magic_bricks/Components/SmallPropertyCard.dart';
+
+import '../Models/PropertyModel.dart';
 
 class TopLocalitySection extends StatelessWidget {
-  const TopLocalitySection({
+  TopLocalitySection({
     super.key,
   });
+  PropertyModel property = PropertyModel(
+      name: "ABC",
+      location: "Vaishali Nagar,Jaipur",
+      price: 12,
+      imageUrl:
+          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvcGVydHl8ZW58MHx8MHx8fDA%3D");
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +40,15 @@ class TopLocalitySection extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child:
-                      GestureDetector(onTap: () {}, child: Text("Mansarover")),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      "Mansarover",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 );
               },
             ),
@@ -39,20 +56,13 @@ class TopLocalitySection extends StatelessWidget {
           SizedBox(
             height: 16,
           ),
-          Container(
-            height: 250,
+          SizedBox(
+            height: 320,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 5,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 200,
-                    width: 250,
-                    color: Colors.red,
-                  ),
-                );
+                return SmallPropertyCard(property: property);
               },
             ),
           ),
