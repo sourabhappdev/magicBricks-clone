@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:magic_bricks/Constants/Constants.dart';
-import 'package:magic_bricks/Screens/Home_Screen/Home_Screen.dart';
 import 'package:magic_bricks/Screens/PostAd_Screen/PostAd_Screen.dart';
-import 'package:magic_bricks/Widgets/MainNavigator.dart';
-
+import '../Screens/Account_Screen/Help_Screen/Help_Screen.dart';
+import '../utils/Methods.dart';
 import '../Screens/Account_Screen/Profile_Screen/Profile_Screen.dart';
+import '../Screens/Account_Screen/YourListed_Screen/YourListed_Screen.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -65,6 +65,11 @@ class MyDrawer extends StatelessWidget {
             title: Text('YOUR LISTINGS'),
             onTap: () {
               // Handle help tile tap
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => YourListed_Screen(),
+                  ));
               print('Listings tapped');
             },
           ),
@@ -73,7 +78,21 @@ class MyDrawer extends StatelessWidget {
             title: Text('HELP'),
             onTap: () {
               // Handle help tile tap
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Help_Screen(),
+                  ));
               print('Help tapped');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.delete),
+            title: Text('DELETE ACCOUNT'),
+            onTap: () {
+              // Handle help tile tap
+              showDeleteAccountDialog(context);
+              print('DELETE tapped');
             },
           ),
           ListTile(

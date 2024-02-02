@@ -4,6 +4,8 @@ import 'package:magic_bricks/Screens/Account_Screen/Profile_Screen/Profile_Scree
 import 'package:magic_bricks/Screens/Account_Screen/YourListed_Screen/YourListed_Screen.dart';
 import 'package:magic_bricks/Widgets/AppBar/AppBar.dart';
 
+import '../../utils/Methods.dart';
+
 class Account_Screen extends StatefulWidget {
   const Account_Screen({super.key});
 
@@ -79,36 +81,6 @@ class _Account_ScreenState extends State<Account_Screen> {
           ],
         ),
       ),
-    );
-  }
-
-  void showDeleteAccountDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Delete Account'),
-          content: Text('Are you sure you want to delete your account?'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                // Perform the delete account action
-                // (you can replace this with your actual implementation)
-                Navigator.of(context).pop(); // Close the dialog
-                // Add your logic to delete the account here
-                print('Account deleted!');
-              },
-              child: Text('Yes'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: Text('No'),
-            ),
-          ],
-        );
-      },
     );
   }
 }
