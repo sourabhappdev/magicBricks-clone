@@ -12,18 +12,8 @@ class Profile_Screen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(0, 4), // vertical shadow
-                    blurRadius: 4.0, // blur radius
-                  ),
-                ],
-              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,6 +32,7 @@ class Profile_Screen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
+                  Divider(),
                 ],
               ),
             ),

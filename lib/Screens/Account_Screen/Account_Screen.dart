@@ -3,7 +3,6 @@ import 'package:magic_bricks/Screens/Account_Screen/Help_Screen/Help_Screen.dart
 import 'package:magic_bricks/Screens/Account_Screen/Profile_Screen/Profile_Screen.dart';
 import 'package:magic_bricks/Screens/Account_Screen/YourListed_Screen/YourListed_Screen.dart';
 import 'package:magic_bricks/Widgets/AppBar/AppBar.dart';
-
 import '../../utils/Methods.dart';
 
 class Account_Screen extends StatefulWidget {

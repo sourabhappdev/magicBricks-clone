@@ -42,10 +42,13 @@ class TopLocalitySection extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {},
-                    child: Text(
-                      "Mansarover",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Text(
+                        "Mansarover",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

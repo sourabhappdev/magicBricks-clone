@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:magic_bricks/Screens/Onboarding_Screen/Onboard_Screen.dart';
+import 'package:magic_bricks/Screens/Onboarding_Screen/onboarding_screen.dart';
 import 'package:magic_bricks/Widgets/MainNavigator.dart';
 
 class Splash_Screen extends StatefulWidget {
