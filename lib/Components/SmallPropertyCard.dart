@@ -5,8 +5,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../Constants/Constants.dart';
 import '../Models/PropertyModel.dart';
-import '../Screens/Deatils_Screen.dart';
-
+import 'package:magic_bricks/Screens/Details_Screen/Details_Screen.dart';
 class SmallPropertyCard extends StatefulWidget {
   final PropertyModel property;
   const SmallPropertyCard({super.key, required this.property});
@@ -24,7 +23,7 @@ class _SmallPropertyCardState extends State<SmallPropertyCard> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const Details_Screen(),
+              builder: (context) =>  Details_Screen(property: widget.property),
             ));
       },
       child: Padding(

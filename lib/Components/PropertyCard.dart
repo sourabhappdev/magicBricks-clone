@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:magic_bricks/Screens/Deatils_Screen.dart';
+import 'package:magic_bricks/Screens/Details_Screen/Details_Screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../Constants/Constants.dart';
 import '../Models/PropertyModel.dart';
@@ -24,7 +24,9 @@ class _PropertyCardState extends State<PropertyCard> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => Details_Screen(),
+              builder: (context) => Details_Screen(
+                property: widget.property,
+              ),
             ));
       },
       child: Container(

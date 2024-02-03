@@ -9,12 +9,24 @@ class TopLocalitySection extends StatelessWidget {
     super.key,
   });
   PropertyModel property = PropertyModel(
-      name: "ABC",
-      location: "Vaishali Nagar,Jaipur",
-      price: 12,
-      imageUrl:
-          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvcGVydHl8ZW58MHx8MHx8fDA%3D");
-
+    name: "ABC",
+    location: "Vaishali Nagar,Jaipur",
+    price: 12,
+    city: 'Jaipur',
+    address: 'Flat 101',
+    carpetArea: 2000,
+    superArea: 2200,
+    category: 'Residential',
+    description: '',
+    locality: 'Shankar Nagar',
+    numberBHK: 4,
+    numberFloor: 3,
+    numberWashroom: 2,
+    propertyForBuySell: 'Sell',
+    subCategory: 'House',
+    imageUrl:
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvcGVydHl8ZW58MHx8MHx8fDA%3D",
+  );
   @override
   Widget build(BuildContext context) {
     return Padding(

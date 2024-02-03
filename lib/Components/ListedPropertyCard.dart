@@ -1,13 +1,11 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../Constants/Constants.dart';
 import '../Models/PropertyModel.dart';
 
 class ListedPropertyCard extends StatefulWidget {
   final PropertyModel property;
-  ListedPropertyCard({required this.property});
+  const ListedPropertyCard({super.key, required this.property});
 
   @override
   State<ListedPropertyCard> createState() => _ListedPropertyCardState();
@@ -19,20 +17,20 @@ class _ListedPropertyCardState extends State<ListedPropertyCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 4, bottom: 4),
-      padding: EdgeInsets.only(top: 4, bottom: 4),
+      margin: const EdgeInsets.only(top: 4, bottom: 4),
+      padding: const EdgeInsets.only(top: 4, bottom: 4),
       color: Colors.white70,
       child: Card(
         color: Colors.white,
         elevation: 4.0,
-        margin: EdgeInsets.all(8.0),
+        margin: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Property Image
             ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(8.0),
                 topRight: Radius.circular(8.0),
               ),
@@ -90,7 +88,7 @@ class _ListedPropertyCardState extends State<ListedPropertyCard> {
 
             // Property Details
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -101,7 +99,7 @@ class _ListedPropertyCardState extends State<ListedPropertyCard> {
                       // Property Name
                       Text(
                         widget.property.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -111,13 +109,13 @@ class _ListedPropertyCardState extends State<ListedPropertyCard> {
                         children: [
                           Text(
                             '\$${widget.property.price.toString()}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.bold,
                               color: Colors.green,
                             ),
                           ),
-                          Text(
+                          const Text(
                             'onwards',
                             style: TextStyle(
                               fontSize: 16.0,
@@ -129,7 +127,7 @@ class _ListedPropertyCardState extends State<ListedPropertyCard> {
                       ),
                     ],
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
@@ -143,7 +141,7 @@ class _ListedPropertyCardState extends State<ListedPropertyCard> {
                   ),
                   Text(
                     widget.property.location,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14.0,
                       color: Colors.black87,
                     ),
@@ -154,18 +152,14 @@ class _ListedPropertyCardState extends State<ListedPropertyCard> {
 
             // Favorite Icon Button
             Padding(
-              padding: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.edit,color: Colors.black,),
-                  ),
-                  IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.delete,
-                      color: Colors.black,
+                      color: Colors.black87,
                       size: 24,
                     ),
                     onPressed: () {
